@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
 
 public class MadLibs {
 
@@ -7,6 +10,32 @@ public class MadLibs {
 		//1. Read a nouns.txt file and store its list of nouns into an arraylist.
 		
 		//2. Read a verbs.txt file and store its list of verbs into an arraylist.
+		
+		BufferedReader br = new BufferedReader(new FileReader("verbs.txt"));
+		
+		ArrayList <String> verbs = new ArrayList <String>( );
+		
+			//read through the file
+		while (br.ready() == true)
+		{
+			//newVerb indicates the current word we're reading in
+			StringBuffer newVerb = "";
+			char next = (char)br.read();
+			
+			//if the next character read is a space, add newVerb to the list + reset it
+			if (next == ' ')
+			{
+				verbs.add(newVerb);
+				newVerb = "";
+			}
+			//otherwise, add the character to newVerb
+			else
+			{
+				newVerb.append(next);
+			}
+		}
+		
+		System.out.println (verbs);
 		
 		//3. Read an adjectives.txt file and store its list of adjectives into an arraylist.
 		
